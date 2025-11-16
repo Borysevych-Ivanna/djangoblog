@@ -1,18 +1,17 @@
 /* ===== myblog/static/css/blog.css ===== */
 
-/* Палiтра та базові налаштування */
 :root{
-  --brand:#c55406;         /* хедер */
-  --brand-2:#e06a15;       /* акценти */
-  --text:#1f2937;          /* основний текст */
-  --muted:#6b7280;         /* другорядний текст */
-  --bg:#f7fafc;            /* фон сторінки */
-  --card:#ffffff;          /* фон карток */
-  --stroke:#e5e7eb;        /* бордери */
-  --ok:#10b981;            /* success */
-  --warn:#f59e0b;          /* warning */
-  --danger:#ef4444;        /* danger */
-  --link:#2563eb;          /* посилання */
+  --brand:#c55406;         
+  --brand-2:#e06a15;       
+  --text:#1f2937;          
+  --muted:#6b7280;         
+  --bg:#f7fafc;            
+  --card:#ffffff;          
+  --stroke:#e5e7eb;       
+  --ok:#10b981;            
+  --warn:#f59e0b;          
+  --danger:#ef4444;        
+  --link:#2563eb;          
 }
 
 *{box-sizing:border-box}
@@ -168,3 +167,4 @@ a:hover{ text-decoration:underline }
 .justify-between{ justify-content:space-between }
 .mt-1{ margin-top:.25rem } .mt-2{ margin-top:.5rem } .mt-3{ margin-top:.75rem } .mt-4{ margin-top:1rem }
 .mb-0{ margin-bottom:0 } .mb-1{ margin-bottom:.25rem } .mb-2{ margin-bottom:.5rem } .mb-3{ margin-bottom:.75rem }
+
