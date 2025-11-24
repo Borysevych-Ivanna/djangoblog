@@ -1,0 +1,393 @@
+/* --------- Базові налаштування --------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #050816;
+    --bg-elevated: #0f172a;
+    --accent: #6366f1;
+    --accent-soft: rgba(99,102,241,0.1);
+    --accent-strong: #4f46e5;
+    --danger: #ef4444;
+    --success: #22c55e;
+    --text: #e5e7eb;
+    --text-muted: #9ca3af;
+    --border: rgba(148,163,184,0.25);
+
+    --radius-lg: 18px;
+    --radius-md: 12px;
+
+    --shadow-soft: 0 18px 45px rgba(15,23,42,0.45);
+    --shadow-small: 0 8px 24px rgba(15,23,42,0.4);
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+    color: var(--text);
+}
+
+/* --------- Контейнер --------- */
+.container {
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* --------- Хедер --------- */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    backdrop-filter: blur(18px);
+    background: linear-gradient(to bottom, rgba(2,6,23,0.95), rgba(2,6,23,0.75));
+    border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.1rem 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    color: var(--text);
+}
+
+.logo-mark {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 20%, #a855f7, #6366f1);
+    box-shadow: var(--shadow-small);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.logo-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--text-muted);
+    padding: 0.45rem 0.85rem;
+    border-radius: 999px;
+    transition: .2s;
+}
+
+.main-nav a:hover {
+    color: var(--text);
+    background: rgba(255,255,255,0.05);
+}
+
+/* форма logout у хедері */
+.nav-logout-form {
+    display: inline-block;
+    margin: 0;
+}
+.nav-logout-form button {
+    margin: 0;
+}
+
+.nav-username {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* --------- Кнопки --------- */
+.btn {
+    padding: 0.45rem 1rem;
+    border-radius: 999px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.btn-primary {
+    background: linear-gradient(to right, var(--accent), var(--accent-strong));
+    color: white;
+    box-shadow: 0 10px 25px rgba(79,70,229,.45);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px rgba(79,70,229,.7);
+}
+
+.btn-outline {
+    border: 1px solid var(--border);
+    color: var(--text);
+    background: rgba(255,255,255,0.05);
+}
+
+.btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.btn-danger {
+    background: linear-gradient(to right, #f87171, #ef4444);
+    color: white;
+}
+
+.btn-success {
+    background: linear-gradient(to right, #22c55e, #15803d);
+    color: white;
+}
+
+/* --------- Головний контент --------- */
+.main-content {
+    padding: 2rem 0 3rem;
+}
+
+/* --------- Заголовки сторінок --------- */
+.page-header {
+    margin-bottom: 1.5rem;
+}
+
+.page-header h1 {
+    margin: 0 0 .3rem;
+    font-size: 2rem;
+}
+
+.page-subtitle {
+    margin: 0;
+    font-size: .95rem;
+    color: var(--text-muted);
+}
+
+/* --------- Сітка постів --------- */
+.posts-grid {
+    display: grid;
+    gap: 1.4rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.post-card {
+    background: rgba(15,23,42,.85);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    padding: 1.2rem 1.3rem;
+    position: relative;
+    transition: .25s;
+    box-shadow: var(--shadow-soft);
+}
+
+.post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0,0,0,.55);
+}
+
+.post-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.post-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post-card-title {
+    margin: 0 0 .2rem;
+    font-size: 1.15rem;
+}
+
+.post-card-date {
+    font-size: .8rem;
+    color: var(--text-muted);
+}
+
+.post-card-excerpt {
+    margin: .4rem 0 .75rem;
+    color: #d1d5db;
+    font-size: .92rem;
+    line-height: 1.45;
+}
+
+.post-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: .82rem;
+}
+
+.post-card-more {
+    color: var(--accent);
+}
+
+/* Чернетки */
+.post-card-draft {
+    border-style: dashed;
+}
+
+/* --------- Бейдж --------- */
+.badge {
+    padding: 0.15rem 0.65rem;
+    border-radius: 999px;
+    font-size: .78rem;
+    background: rgba(255,255,255,.05);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+}
+
+/* --------- Окремий пост --------- */
+.single-post {
+    background: rgba(15,23,42,.85);
+    padding: 1.8rem 2rem;
+    border-radius: 22px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-soft);
+}
+
+.single-post-title {
+    font-size: 2.2rem;
+    margin: 0 0 .5rem;
+}
+
+.single-post-meta {
+    font-size: .9rem;
+    color: var(--text-muted);
+    margin-bottom: 1.2rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.single-post-body {
+    line-height: 1.7;
+    font-size: .98rem;
+}
+
+/* --------- Дії --------- */
+.single-post-actions {
+    display: flex;
+    gap: .5rem;
+    margin-bottom: 1.2rem;
+}
+
+/* --------- Коментарі --------- */
+.comments-section {
+    border-top: 1px solid var(--border);
+    margin-top: 2rem;
+    padding-top: 1.2rem;
+}
+
+.comments-header {
+    display: flex;
+    justify-content: space_between;
+    align-items: center;
+}
+
+.comment-card {
+    background: rgba(255,255,255,0.05);
+    padding: .8rem 1rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    margin-bottom: .8rem;
+}
+
+.comment-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: .8rem;
+    color: var(--text-muted);
+    margin-bottom: .4rem;
+}
+
+/* --------- Форми --------- */
+.form-wrapper {
+    background: rgba(15,23,42,.85);
+    padding: 1.8rem 2rem;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    max-width: 520px;
+    margin: 0 auto;
+    box-shadow: var(--shadow-soft);
+}
+
+.styled-form p {
+    margin: .9rem 0;
+}
+
+.styled-form label {
+    font-size: .85rem;
+    color: var(--text-muted);
+}
+
+.styled-form input[type="text"],
+.styled-form textarea {
+    width: 100%;
+    padding: .6rem .75rem;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,.05);
+    color: var(--text);
+    font-size: .95rem;
+}
+
+.styled-form input:focus,
+.styled-form textarea:focus {
+    border-color: var(--accent);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(99,102,241,.3);
+}
+
+.form-actions {
+    margin-top: 1.1rem;
+    display: flex;
+    gap: .5rem;
+}
+
+/* --------- Футер --------- */
+.site-footer {
+    background: rgba(2,6,23,.95);
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--border);
+    margin-top: 3rem;
+}
+
+.footer-inner {
+    text-align: center;
+    font-size: .82rem;
+    color: var(--text-muted);
+}
+
+/* --------- Адаптив --------- */
+@media (max-width: 720px) {
+    .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: .5rem;
+    }
+
+    .single-post {
+        padding: 1.4rem 1.2rem;
+    }
+}

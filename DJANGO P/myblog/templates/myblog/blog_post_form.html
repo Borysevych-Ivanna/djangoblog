@@ -1,0 +1,23 @@
+{% extends 'myblog/base.html' %}
+
+{% block title %}
+    {% if form.instance.pk %}Редагувати пост{% else %}Новий пост{% endif %} — MyBlog
+{% endblock %}
+
+{% block content %}
+<section class="form-wrapper">
+    <h1 class="form-title">
+        {% if form.instance.pk %}Редагувати пост{% else %}Новий пост{% endif %}
+    </h1>
+
+    <form method="POST" class="styled-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Зберегти</button>
+            <a href="{% url 'post_list' %}" class="btn btn-outline">Скасувати</a>
+        </div>
+    </form>
+</section>
+{% endblock %}

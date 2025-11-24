@@ -1,0 +1,18 @@
+{% extends 'myblog/base.html' %}
+
+{% block title %}Новий коментар — MyBlog{% endblock %}
+
+{% block content %}
+<section class="form-wrapper">
+    <h1 class="form-title">Новий коментар</h1>
+
+    <form method="POST" class="styled-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Додати</button>
+        </div>
+    </form>
+</section>
+{% endblock %}

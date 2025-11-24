@@ -1,0 +1,61 @@
+{% extends 'myblog/base.html' %}
+
+{% block title %}{{ post.title }} — MyBlog{% endblock %}
+
+{% block content %}
+<article class="single-post">
+    <header class="single-post-header">
+        <h1 class="single-post-title">{{ post.title }}</h1>
+
+        <div class="single-post-meta">
+            {% if post.published_date %}
+                <span>Опубліковано: {{ post.published_date|date:"d.m.Y H:i" }}</span>
+            {% else %}
+                <span class="badge badge-muted">Чернетка</span>
+            {% endif %}
+            <span>Автор: {{ post.author }}</span>
+        </div>
+
+        {% if user.is_authenticated %}
+            <div class="single-post-actions">
+                <a href="{% url 'post_edit' pk=post.pk %}" class="btn btn-primary">✏️ Редагувати</a>
+
+                {% if not post.published_date %}
+                    <a href="{% url 'post_publish' pk=post.pk %}" class="btn btn-success">
+                        ✅ Опублікувати
+                    </a>
+                {% endif %}
+
+                <a href="{% url 'post_remove' pk=post.pk %}" class="btn btn-danger">
+                    🗑 Видалити
+                </a>
+            </div>
+        {% endif %}
+    </header>
+
+    <div class="single-post-body">
+        <p>{{ post.text|linebreaksbr }}</p>
+    </div>
+
+    <section class="comments-section">
+        <div class="comments-header">
+            <h2>Коментарі ({{ post.all_comments|length }})</h2>
+            <a href="{% url 'add_comment_to_post' pk=post.pk %}" class="btn btn-outline">
+                Додати коментар
+            </a>
+        </div>
+
+        {% for comment in post.all_comments %}
+            <div class="comment-card">
+                <div class="comment-meta">
+                    <strong>{{ comment.author }}</strong>
+                    <span>{{ comment.created_date|date:"d.m.Y H:i" }}</span>
+                </div>
+                <p class="comment-text">{{ comment.text|linebreaksbr }}</p>
+            </div>
+        {% empty %}
+            <p>Ще ніхто не залишив коментар. Будь першою 💬</p>
+        {% endfor %}
+    </section>
+</article>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'myblog/base.html' %}
+
+{% block title %}Головна — MyBlog{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <h1>Усі пости</h1>
+    <p class="page-subtitle">
+        Свіжі думки, замітки та історії.
+    </p>
+</section>
+
+<section class="posts-grid">
+    {% for post in posts %}
+        <article class="post-card">
+            <a href="{% url 'post_detail' pk=post.pk %}" class="post-card-link">
+                <div class="post-card-header">
+                    <h2 class="post-card-title">{{ post.title }}</h2>
+                    {% if post.published_date %}
+                        <span class="post-card-date">
+                            {{ post.published_date|date:"d.m.Y H:i" }}
+                        </span>
+                    {% endif %}
+                </div>
+
+                <p class="post-card-excerpt">
+                    {{ post.text|striptags|truncatechars:220 }}
+                </p>
+
+                <div class="post-card-footer">
+                    <span class="badge">
+                        Коментарів: {{ post.all_comments|length }}
+                    </span>
+                    <span class="post-card-more">Читати далі →</span>
+                </div>
+            </a>
+        </article>
+    {% empty %}
+        <p>Ще немає жодного поста. Будь першою, хто щось напише 😊</p>
+    {% endfor %}
+</section>
+{% endblock %}

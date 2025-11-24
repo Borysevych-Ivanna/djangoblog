@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}MyBlog{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {# Підключаємо CSS: ти казала, що файл називається style.css #}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<header class="site-header">
+    <div class="container header-inner">
+        <a href="{% url 'post_list' %}" class="logo">
+            <span class="logo-mark">MB</span>
+            <span class="logo-text">MyBlog</span>
+        </a>
+
+        <nav class="main-nav">
+            <a href="{% url 'post_list' %}">Головна</a>
+            <a href="{% url 'post_draft_list' %}">Чернетки</a>
+
+            {% if user.is_authenticated %}
+                <a href="{% url 'post_new' %}" class="btn btn-primary">Новий пост</a>
+                <span class="nav-username">Привіт, {{ user.username }}!</span>
+
+                {# ВИХІД ЧЕРЕЗ POST — так буде працювати в Django 5 #}
+                <form method="post" action="{% url 'logout' %}" class="nav-logout-form">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline">Вийти</button>
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn btn-outline">Увійти</a>
+            {% endif %}
+        </nav>
+    </div>
+</header>
+
+<main class="container main-content">
+    {% block content %}{% endblock %}
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-inner">
+        <p>© {{ now|date:"Y" }} MyBlog. Усі права захищено.</p>
+    </div>
+</footer>
+</body>
+</html>

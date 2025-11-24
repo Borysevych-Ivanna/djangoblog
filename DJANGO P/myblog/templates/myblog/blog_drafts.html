@@ -1,0 +1,35 @@
+{% extends 'myblog/base.html' %}
+
+{% block title %}Чернетки — MyBlog{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <h1>Чернетки</h1>
+    <p class="page-subtitle">Пости, які ще чекають свого часу.</p>
+</section>
+
+<section class="posts-grid">
+    {% for post in posts %}
+        <article class="post-card post-card-draft">
+            <a href="{% url 'post_detail' pk=post.pk %}" class="post-card-link">
+                <div class="post-card-header">
+                    <h2 class="post-card-title">{{ post.title }}</h2>
+                    <span class="badge badge-muted">
+                        Створено: {{ post.created_date|date:"d.m.Y H:i" }}
+                    </span>
+                </div>
+
+                <p class="post-card-excerpt">
+                    {{ post.text|striptags|truncatechars:200 }}
+                </p>
+
+                <div class="post-card-footer">
+                    <span class="post-card-more">Відкрити чернетку →</span>
+                </div>
+            </a>
+        </article>
+    {% empty %}
+        <p>У тебе ще немає чернеток.</p>
+    {% endfor %}
+</section>
+{% endblock %}
