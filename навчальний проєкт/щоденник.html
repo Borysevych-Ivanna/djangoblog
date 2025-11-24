@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Онлайн-щоденник благодійної ярмарки</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f9fafb; }
+    header { background: #004b2d; color: white; padding: 20px; text-align: center; }
+    nav { background: #e6f0ea; padding: 10px; text-align: center; }
+    nav a { margin: 10px; color: #004b2d; text-decoration: none; font-weight: bold; }
+    section { padding: 20px; max-width: 900px; margin: auto; background: white; border-radius: 12px; margin-top: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    h2 { color: #004b2d; border-bottom: 2px solid #e0e0e0; padding-bottom: 5px; }
+    img { width: 200px; border-radius: 10px; margin: 10px; }
+    footer { text-align: center; margin-top: 40px; padding: 20px; background: #004b2d; color: white; }
+    form { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
+    input, textarea { padding: 8px; border: 1px solid #ccc; border-radius: 6px; }
+    button { background: #004b2d; color: white; padding: 10px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
+    button:hover { background: #037d4b; }
+    .idea-card { background: #f2f9f3; padding: 10px; border-radius: 8px; margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Добро своїми руками</h1>
+  <p>Онлайн-щоденник підготовки до шкільної благодійної ярмарки на підтримку ЗСУ</p>
+</header>
+
+<nav>
+  <a href="#instructions">Інструкції</a>
+  <a href="#ideas">Ідеї хендмейду</a>
+  <a href="#diary">Щоденник</a>
+  <a href="#gallery">Фотозвіт</a>
+</nav>
+
+<section id="instructions">
+  <h2>Інструкції для учасників</h2>
+  <p>✅ Кожен волонтер відповідає за свою зону ярмарки.</p>
+  <p>✅ Вироби повинні бути безпечними та виготовленими власноруч.</p>
+  <p>✅ Зібрані кошти перераховуються на офіційний фонд підтримки ЗСУ.</p>
+</section>
+
+<section id="ideas">
+  <h2>Найкращі ідеї хендмейду</h2>
+
+  <div id="ideaList">
+    <div class="idea-card">🎨 Браслети зі стрічок/бісеру</div>
+    <div class="idea-card">🍿 Попкорн </div>
+    <div class="idea-card">🍪 Печиво</div>
+    <div class="idea-card">🧁 Кекси</div>
+    <div class="idea-card">🍰 Тортики</div>
+    <div class="idea-card">🍕 Домашня піца</div>
+  </div>
+
+  <h3>Додати власну ідею:</h3>
+  <form id="ideaForm">
+    <input type="text" id="ideaTitle" placeholder="Назва ідеї" required>
+    <textarea id="ideaDesc" placeholder="Короткий опис або матеріали" rows="3"></textarea>
+    <button type="submit">Додати ідею</button>
+  </form>
+</section>
+
+<section id="diary">
+  <h2>Щоденник підготовки</h2>
+  <p><b>Тиждень 1:</b> Створено волонтерські групи, вибрано ідеї виробів.</p>
+  <p><b>Тиждень 2:</b> Почали виготовлення прикрас і випічки.</p>
+  <p><b>Тиждень 3:</b> Фото готових виробів, оформлення стендів.</p>
+</section>
+
+<section id="gallery">
+  <h2>Фотозвіт</h2>
+  <img src="image2.jpg" alt="Браслети">
+  <img src="popcorn.jpg" alt="Попкорн">
+  <img src="cookies.jpg" alt="Печиво">
+  <img src="keks.jpg" alt="Кекси">
+  <img src="cake.webp" alt="Тортики">
+  <img src="pizza.jpg" alt="Домашня піца">
+</section>
+
+<footer>
+  <p>© 2025 | Благодійна шкільна ярмарка для ЗСУ</p>
+</footer>
+
+<script>
+  // обробник додавання нової ідеї
+  document.getElementById('ideaForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const title = document.getElementById('ideaTitle').value.trim();
+    const desc = document.getElementById('ideaDesc').value.trim();
+
+    if (title) {
+      const ideaList = document.getElementById('ideaList');
+      const newIdea = document.createElement('div');
+      newIdea.classList.add('idea-card');
+      newIdea.innerHTML = `💡 <b>${title}</b><br>${desc}`;
+      ideaList.appendChild(newIdea);
+
+      // очищаємо форму
+      document.getElementById('ideaTitle').value = '';
+      document.getElementById('ideaDesc').value = '';
+    }
+  });
+</script>
+
+</body>
+</html>
