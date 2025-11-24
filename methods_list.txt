@@ -1,7 +1,0 @@
-# Список методів та функцій
-
-1) read_csv(file_path) - зчитує CSV-файл і повертає дані.
-   Використано в data_loader.py
-
-2) calculate_average(scores) - обчислює середнє арифметичне.
-   Використано в analysis.py
